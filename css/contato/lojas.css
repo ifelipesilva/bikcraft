@@ -63,7 +63,7 @@
 }
 
 @media (max-width: 600px) {
-}
-.lojas {
-  grid-template-columns: 1fr;
+  .lojas {
+    grid-template-columns: 1fr;
+  }
 }
