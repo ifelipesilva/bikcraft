@@ -2,31 +2,45 @@
 
 const links = document.querySelectorAll('.header-menu a')
 
-
-function ativarLink(link){
+function ativarLink(link) {
   const url = location.href
   const href = link.href
 
-  
-  if(url.includes(href)){
+  if (url.includes(href)) {
     link.classList.add('ativo')
   }
-
 }
-
 
 links.forEach(ativarLink)
 
-
 // ativar items do orçamento
-const parametros = new URLSearchParams(location.search) 
+const parametros = new URLSearchParams(location.search)
 
-
-function ativarProduto(parametro){
+function ativarProduto(parametro) {
   const element = document.getElementById(parametro)
-  if(element){
+  if (element) {
     element.checked = true
   }
 }
 
 parametros.forEach(ativarProduto)
+
+// perguntas frequentes
+
+const perguntas = document.querySelectorAll('.perguntas button')
+
+function ativarPergunta(event) {
+  const pergunta = event.currentTarget
+  const controls = pergunta.getAttribute('arial-controls')
+  const resposta = document.getElementById(controls)
+
+  const ativa = resposta.classList.contains('ativa')
+  pergunta.setAttribute('aria-expended', ativa)
+  resposta.classList.toggle('ativa')
+}
+
+function eventosPerguntas(pergunta) {
+  pergunta.addEventListener('click', ativarPergunta)
+}
+
+perguntas.forEach(eventosPerguntas)
